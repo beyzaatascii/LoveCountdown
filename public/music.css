@@ -1,0 +1,171 @@
+:root {
+  --main-bg: rgba(0, 0, 0, 0);
+  --button-color: #53b776;
+  --text-color: #fff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url("images/music.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.container {
+  background-image: url("images/player.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px 20px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 650px;
+  margin: 20px auto;
+  text-align: center;
+  box-sizing: border-box;
+  color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 🎧 Şu an çalan şarkı kutusu */
+#nowPlaying {
+  display: block;
+  max-width: 360px;
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+#nowPlaying a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+#nowPlaying a:hover {
+  transform: scale(1.02);
+}
+
+#nowPlaying img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+#nowPlaying strong {
+  font-size: 1.1rem;
+  display: block;
+  margin-top: 8px;
+}
+
+#nowPlaying small {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* 🎛️ Kontrol Butonları */
+
+#controls {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+.player-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.control-btn {
+  background-color: var(--button-color);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0; /* Daralmayı engelle */
+}
+
+.control-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+}
+
+#loginBtn {
+  background-color: #53b776;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 5px;
+  transition: background-color 0.2s ease;
+}
+
+
+/* 🎵 Responsive Tasarım */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    margin: 20px 10px;
+    padding: 20px 15px;
+    border-radius: 15px;
+    width: calc(100% - 20px);
+  }
+
+  #nowPlaying img {
+    width: 64px;
+    height: 64px;
+  }
+
+  #nowPlaying strong {
+    font-size: 1rem;
+  }
+
+  #nowPlaying small {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #controls {
+    flex-direction: row;
+  }
+}

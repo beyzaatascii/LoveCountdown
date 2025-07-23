@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playlist</title>
+    <link rel="stylesheet" href="music.css" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎵 Birlikte Dinleyelim 🎵</h1>
+        <button id="loginBtn">Spotify ile Giriş Yap</button>
+
+        <div class="player-section">
+
+            <!-- Bu alan çalınan şarkı varsa gösterilecek -->
+            <div id="nowPlaying" style="display: none;"></div>
+
+            <!-- Kontrol butonları -->
+            <div id="controls">
+                <!-- Önceki -->
+                <button id="prevBtn" class="control-btn" title="Önceki">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6 19.5V4.5H8V19.5H6ZM9 12L20 19V5L9 12Z" />
+                    </svg>
+                </button>
+
+                <!-- Oynat / Duraklat -->
+                <button id="playBtn" class="control-btn" title="Oynat/Duraklat">
+                    <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z" /> <!-- Play ikon -->
+                    </svg>
+                </button>
+
+                <!-- Sonraki -->
+                <button id="nextBtn" class="control-btn" title="Sonraki">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 4.5V19.5H18V4.5H16ZM15 12L4 5V19L15 12Z" />
+                    </svg>
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script src="music.js" type="module"></script>
+
+</body>
+
+</html>

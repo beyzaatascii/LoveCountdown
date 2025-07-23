@@ -1,0 +1,105 @@
+:root {
+  --vh: 1vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Arka plan */
+.bg {
+  background-image: url("images/to-do.webp"); /* ← kendi resmini buraya koy */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: calc(var(--vh, 1vh) * 100);
+  z-index: -1;
+}
+
+/* Ana içerik */
+.container {
+  height: calc(var(--vh, 1vh) * 100);
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0); /* isteğe bağlı şeffaflık */
+}
+
+h1 {
+  margin-top: 10px;
+}
+
+#taskInput {
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin: 10px 0;
+}
+
+#addTaskBtn {
+  padding: 10px 20px;
+  background-color: #6ca6c1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  width: 80%;
+  max-width: 400px;
+}
+
+li {
+  background-color: rgba(255, 255, 255, 0.078);
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+/* Checkbox */
+li input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+/* Tamamlanan görev */
+li.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+button.delete {
+  background-color: #e57373;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}

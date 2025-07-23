@@ -1,0 +1,93 @@
+html, body {
+  margin: 0; padding: 0; height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url("images/mavi.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 0 20px;
+
+  height: calc(var(--vh, 1vh) * 100);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.countdown-banner {
+  background-color: #1c2d5a;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  margin-bottom: 18px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  background-color: transparent;
+  padding: 16px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+.day {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #1c2d5a;
+  border: 1px solid #1c2d5a;
+  border-radius: 8px;
+  user-select: none; /* Metin seçilmesin */
+}
+
+.today {
+  background-color: #1c2d5a;
+  color: white;
+  border-radius: 50%;
+}
+
+.love-day {
+  background-color: #1c2d5a;
+  color: #fff;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive ayarlar */
+@media (max-width: 480px) {
+  .countdown-banner {
+    font-size: 1.2rem;
+    padding: 10px 16px;
+  }
+  
+  .calendar {
+    gap: 6px;
+    padding: 12px;
+  }
+  
+  .day {
+    font-size: 0.85rem;
+  }
+  
+  .love-day {
+    font-size: 1rem;
+  }
+}

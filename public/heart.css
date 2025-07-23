@@ -1,0 +1,103 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.heart-page {
+  background-image: url("images/kalpli-kare.webp"); /* kendi arka planını buraya ekle */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height:calc(var(--vh, 1vh) * 100);
+  font-family: "Segoe UI", sans-serif;
+  background-repeat: no-repeat;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* yatay ortala */
+  justify-content: center; /* dikey ortala */
+  height: 100vh;
+  text-align: center;
+  z-index: 2;
+  padding: 20px;
+}
+
+.heart-icon {
+  width: 300px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.3s ease;
+  margin: 20px 0;
+  filter: hue-rotate(-10deg) saturate(1.8);
+
+  -webkit-tap-highlight-color: transparent; /* dokunma efektini kaldır */
+  outline: none;
+  user-select: none;
+}
+
+#username {
+  text-align: center;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #ed98a0;
+  border-radius: 8px;
+  border: 1px solid #ed98a0;
+  width: 300px;
+  max-width: 90vw;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .heart-icon {
+    width: 180px;
+    margin: 15px 0;
+  }
+
+  #username {
+    width: 90vw;
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .center-content {
+    padding: 10px;
+  }
+}
+
+
+
+#heartCountArea p {
+  font-size: 1.1rem;
+  margin: 8px;
+}
+
+.hearts-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.message-bar {
+  position: absolute;
+  top: 10px;
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  font-size: 0.9rem;
+  display: none;
+}
+

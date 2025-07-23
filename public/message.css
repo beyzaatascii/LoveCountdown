@@ -1,0 +1,191 @@
+/* Temel sıfırlamalar ve tam yükseklik */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Body stil ve arka plan */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url("images/yesil.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  display: flex;
+  flex-direction: column;
+  height: calc(var(--vh, 1vh) * 100);
+  color: #1c3a1c;
+}
+
+/* Mesaj sayfası kapsayıcı */
+.message-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+  background-color: rgba(255,255,255,0); /* yarı saydam arka plan */
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Kullanıcı adı input */
+#username {
+  padding: 8px;
+  margin: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  background-color: #d2e5d1; /* açık yeşil */
+  color: #1c3a1c;
+  font-weight: bold;
+}
+
+/* Mesaj alanı, scroll yapılabilir */
+.messages {
+  flex: 1;
+  overflow-y: scroll;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.messages::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* Her bir mesaj kutusu */
+.message {
+  padding: 10px 16px;
+  border-radius: 20px;
+  max-width: 70%;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Beyza mesajları solda */
+.beyza {
+  align-self: flex-start;
+  background-color: #ccead9; /* yeşilimsi */
+  color: #2c4f2c;
+}
+
+/* Onat mesajları sağda */
+.onat {
+  align-self: flex-end;
+  background-color: #b3dac2;
+  color: #1f3920;
+  text-align: right;
+}
+
+/* Mesaj yazma alanı */
+.input-area {
+  display: flex;
+  padding: 10px 20px;
+  background-color: #eaf3ea;
+  border-top: 1px solid #d0d0d0;
+  border-radius: 0 0 12px 12px;
+}
+
+/* Mesaj input */
+#messageInput {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #b5c8b4;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  outline: none;
+}
+
+/* Gönder butonu */
+#sendBtn {
+  margin-left: 10px;
+  background-color: #6da77d;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#sendBtn:hover {
+  background-color: #558d69;
+}
+
+.date-separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  margin: 20px 0 10px;
+}
+
+.date-separator::before,
+.date-separator::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #aaa;
+  margin: 0 10px;
+}
+
+.date-separator::after {
+  content: attr(data-date);
+  padding: 0 10px;
+  color: #444;
+  font-weight: bold;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+}
+
+
+
+.message {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.message-time {
+  display: block;
+  font-size: 0.7rem;
+  color: #aaa;
+  margin-top: 4px;
+  text-align: right;
+}
+
+
+
+/* Responsive - mobil için */
+@media (max-width: 480px) {
+  .message-page {
+    border-radius: 0;
+  }
+  
+  #username {
+    margin: 8px 10px;
+  }
+  
+  .input-area {
+    padding: 8px 10px;
+  }
+  
+  #sendBtn {
+    padding: 8px 12px;
+  }
+  
+  .messages {
+    padding: 8px 10px;
+  }
+}
