@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Love Countdown</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
-  <link rel="preload" as="image" href="images/bg.webp" />
-
-
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Giriş Yap</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f6f8fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 1rem;
+    }
+  </style>
 </head>
 <body>
-  <div class="overlay">
-    <div class="container">
-      <h1>💕 Hoş Geldin 💕</h1>
-      <div class="menu">
-        <a class="btn" href="heart.html">💖 Kalp Gönder</a>
-        <a class="btn" href="message.html">💌 Mesaj Bırak</a>
-        <a class="btn" href="to-do.html">📝 Yapılacaklar</a>
-        <a class="btn" href="countdown.html">📅 Geri Sayım</a>
-        <a class="btn" href="music.html">🎵 Müzik</a> 
-      </div>
-    </div>
-  </div>
+
+  <h2>Love App 💚 Giriş</h2>
+  <input type="text" id="username" placeholder="Kullanıcı adı (beyza/onat)">
+  <input type="password" id="password" placeholder="Şifre">
+  <button onclick="login()">Giriş Yap</button>
+
+  <script>
+    function login() {
+      const username = document.getElementById("username").value.trim().toLowerCase();
+      const password = document.getElementById("password").value.trim();
+
+      const validUsers = {
+        beyza: "0912",
+        onat: "0912"
+      };
+
+      if (validUsers[username] && validUsers[username] === password) {
+        localStorage.setItem("username", username);
+        window.location.href = "menu.html";
+      } else {
+        alert("Hatalı kullanıcı adı veya şifre 🫣");
+      }
+    }
+  </script>
+
 </body>
 </html>
