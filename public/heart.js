@@ -1,44 +1,53 @@
-// Firebase App ve Database modüllerini içe aktar
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-import { getDatabase, ref, onValue, runTransaction } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
+// Firebase modülleri
+import { database } from "./firebase-config.js";
+import {
+  ref,
+  onValue,
+  runTransaction
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-// Firebase config
-import { firebaseConfig } from './firebase-config.js';
+// Kullanıcı kontrolü
+const username = localStorage.getItem("username");
+const displayName = localStorage.getItem("displayName");
 
+if (!username || !displayName) {
+  window.location.href = "login.html"; // Giriş yapılmamışsa yönlendir
+}
 
-// Uygulamayı başlat
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+// Hoş geldin mesajı (eğer varsa ekrana yaz)
+const welcomeEl = document.getElementById("welcomeMsg");
+if (welcomeEl) {
+  welcomeEl.textContent = `Hoş geldin ${displayName} 💖 Kalp gönder bakalım!`;
+}
 
-// Kalp gönderme işlevi
+// HTML elementleri
 const sendHeart = document.getElementById("sendHeart");
-const usernameInput = document.getElementById("username");
+const beyzaCount = document.getElementById("beyzaCount");
+const onatCount = document.getElementById("onatCount");
+const messageBar = document.getElementById("messageBar");
+const heartsContainer = document.querySelector(".hearts-container");
 
+// Kalp gönderme işlemi
 sendHeart.addEventListener("click", () => {
-  const user = usernameInput.value.trim().toLowerCase();
+  const user = username.toLowerCase();
 
   if (user !== "beyza" && user !== "onat") {
-    showMessage("Lütfen 'beyza' ya da 'onat' olarak giriş yapın.");
+    showMessage("Kullanıcı adı geçersiz.");
     return;
   }
 
-  const userRef = ref(db, "hearts/" + user);
-  runTransaction(userRef, current => {
-    return (current || 0) + 1;
-  });
-
+  const userRef = ref(database, "hearts/" + user);
+  runTransaction(userRef, current => (current || 0) + 1);
   createFallingHeart();
 });
 
-// Kalp sayılarını canlı olarak dinle
-const beyzaRef = ref(db, "hearts/beyza");
-const onatRef = ref(db, "hearts/onat");
-
-onValue(beyzaRef, snapshot => {
-  document.getElementById("beyzaCount").innerText = snapshot.val() || 0;
+// Kalp sayısını canlı olarak dinle
+onValue(ref(database, "hearts/beyza"), snapshot => {
+  beyzaCount.innerText = snapshot.val() || 0;
 });
-onValue(onatRef, snapshot => {
-  document.getElementById("onatCount").innerText = snapshot.val() || 0;
+
+onValue(ref(database, "hearts/onat"), snapshot => {
+  onatCount.innerText = snapshot.val() || 0;
 });
 
 // Kalp animasyonu
@@ -50,26 +59,33 @@ function createFallingHeart() {
   heart.style.top = "-30px";
   heart.style.fontSize = "24px";
   heart.style.animation = "fall 3s linear forwards";
-  document.querySelector(".hearts-container").appendChild(heart);
+  heartsContainer.appendChild(heart);
 
   setTimeout(() => heart.remove(), 3000);
 }
 
 // Uyarı mesajı
 function showMessage(msg) {
-  const bar = document.getElementById("messageBar");
-  bar.textContent = msg;
-  bar.style.background = "#ffd6d6";
-  bar.style.padding = "10px";
-  bar.style.textAlign = "center";
-  bar.style.color = "#b30000";
+  messageBar.textContent = msg;
+  messageBar.style.background = "#ffd6d6";
+  messageBar.style.padding = "10px";
+  messageBar.style.textAlign = "center";
+  messageBar.style.color = "#b30000";
   setTimeout(() => {
-    bar.textContent = "";
-    bar.style = "";
+    messageBar.textContent = "";
+    messageBar.style = "";
   }, 3000);
 }
 
-// Animasyon stili
+// Mobil uyum için yüksekliği ayarla
+function setFullHeight() {
+  document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+}
+window.addEventListener('resize', setFullHeight);
+window.addEventListener('load', setFullHeight);
+setFullHeight();
+
+// Kalp düşme animasyonu stili
 const style = document.createElement("style");
 style.innerHTML = `
 @keyframes fall {
@@ -80,10 +96,3 @@ style.innerHTML = `
 }
 `;
 document.head.appendChild(style);
-
-function setFullHeight() {
-  document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-}
-window.addEventListener('resize', setFullHeight);
-window.addEventListener('load', setFullHeight);
-setFullHeight();

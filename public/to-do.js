@@ -1,20 +1,16 @@
-// Firebase modüllerini içe aktar
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import { database } from "./firebase-config.js";
 import {
-  getDatabase,
   ref,
+  set,
+  get,
   push,
+  child,
+  onValue,
   onChildAdded
-} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-// 🔑 Firebase yapılandırman
-import { firebaseConfig } from './firebase-config.js';
-
-
-// Firebase başlat
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const todosRef = ref(db, "todos");
+// ✅ Doğru referans bu şekilde
+const todosRef = ref(database, "todos");
 
 // Elementler
 const taskInput = document.getElementById("taskInput");

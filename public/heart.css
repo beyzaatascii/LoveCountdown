@@ -2,28 +2,36 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  width: 100%;
   box-sizing: border-box;
-  overflow-x: hidden;
+  overflow-x: hidden; /* 🌟 sağdan taşmayı engelle */
   overflow-y: auto;
+  background-color: #fff;
 }
+
 .heart-page {
-  background-image: url("images/kalpli-kare.webp"); /* kendi arka planını buraya ekle */
+  background-image: url("images/kalpli-kare.webp");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* 🌟 arka planı sabitler */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height:calc(var(--vh, 1vh) * 100);
+  height: calc(var(--vh, 1vh) * 100); /* 🌟 mobil uyumlu yükseklik */
+  width: 100%;
+  max-width: 100vw; /* 🌟 yatay taşmayı engelle */
   font-family: "Segoe UI", sans-serif;
-  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden; /* 🌟 içeride kalp animasyonu dışarı taşmasın */
 }
 
 .center-content {
   display: flex;
   flex-direction: column;
-  align-items: center; /* yatay ortala */
-  justify-content: center; /* dikey ortala */
+  align-items: center;
+  justify-content: center;
   height: 100vh;
   text-align: center;
   z-index: 2;
@@ -36,8 +44,7 @@ html, body {
   transition: transform 0.2s ease, filter 0.3s ease;
   margin: 20px 0;
   filter: hue-rotate(-10deg) saturate(1.8);
-
-  -webkit-tap-highlight-color: transparent; /* dokunma efektini kaldır */
+  -webkit-tap-highlight-color: transparent;
   outline: none;
   user-select: none;
 }
@@ -72,8 +79,6 @@ html, body {
   }
 }
 
-
-
 #heartCountArea p {
   font-size: 1.1rem;
   margin: 8px;
@@ -87,6 +92,7 @@ html, body {
   height: 100%;
   pointer-events: none;
   z-index: 1;
+  overflow: hidden;
 }
 
 .message-bar {
@@ -100,4 +106,3 @@ html, body {
   font-size: 0.9rem;
   display: none;
 }
-

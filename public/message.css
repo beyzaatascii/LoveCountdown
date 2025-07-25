@@ -1,51 +1,68 @@
-/* Temel sıfırlamalar ve tam yükseklik */
+/* 🌟: Arka plan kaymasını engelleyecek sabitlemeler */
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
   box-sizing: border-box;
-}
-
-/* Body stil ve arka plan */
-body {
-  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden; /* 🌟 Sağdan sola taşma engeli */
+  width: 100%;
+  background-color: #f9f9f9;
   background-image: url("images/yesil.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
-  display: flex;
-  flex-direction: column;
-  height: calc(var(--vh, 1vh) * 100);
-  color: #1c3a1c;
+  background-attachment: fixed; /* 🌟 Arka plan sabit */
 }
 
-/* Mesaj sayfası kapsayıcı */
+/* Bu satır zaten uygundu ama max-width sınırlandırması yerine tam otursun diye max-width kalktı */
 .message-page {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  max-width: 600px;
+  height: calc(var(--vh, 1vh) * 100); /* 🌟 Mobil sabit yükseklik */
   margin: 0 auto;
   width: 100%;
-  background-color: rgba(255,255,255,0); /* yarı saydam arka plan */
+  max-width: 100vw; /* 🌟 Ekranı aşmasın */
+  background-color: rgba(255,255,255,0); 
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  overflow-x: hidden; /* 🌟 Mesaj içeriği genişlerse bile taşma yapmasın */
 }
 
-/* Kullanıcı adı input */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #1c3a1c;
+}
+
+/* Chat header */
+.chat-with {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 10px 20px;
+  margin: 0;
+  background-color: #b3dac2;
+  color: #333;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  z-index: 1000;
+}
+
+/* Kullanıcı adı input (artık kullanılmıyorsa silebilirsin) */
 #username {
   padding: 8px;
   margin: 10px;
   border-radius: 8px;
   border: none;
   font-size: 1rem;
-  background-color: #d2e5d1; /* açık yeşil */
+  background-color: #d2e5d1;
   color: #1c3a1c;
   font-weight: bold;
 }
 
-/* Mesaj alanı, scroll yapılabilir */
+/* Mesajlar alanı */
 .messages {
   flex: 1;
   overflow-y: scroll;
@@ -54,15 +71,15 @@ body {
   flex-direction: column;
   gap: 10px;
 
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .messages::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
+  display: none;
 }
 
-/* Her bir mesaj kutusu */
+/* Mesaj kutuları */
 .message {
   padding: 10px 16px;
   border-radius: 20px;
@@ -70,16 +87,16 @@ body {
   word-wrap: break-word;
   font-size: 0.95rem;
   line-height: 1.4;
+  position: relative;
+  padding-bottom: 20px;
 }
 
-/* Beyza mesajları solda */
 .beyza {
   align-self: flex-start;
-  background-color: #ccead9; /* yeşilimsi */
+  background-color: #ccead9;
   color: #2c4f2c;
 }
 
-/* Onat mesajları sağda */
 .onat {
   align-self: flex-end;
   background-color: #b3dac2;
@@ -96,7 +113,6 @@ body {
   border-radius: 0 0 12px 12px;
 }
 
-/* Mesaj input */
 #messageInput {
   flex: 1;
   padding: 10px;
@@ -107,7 +123,6 @@ body {
   outline: none;
 }
 
-/* Gönder butonu */
 #sendBtn {
   margin-left: 10px;
   background-color: #6da77d;
@@ -150,13 +165,6 @@ body {
   border-radius: 12px;
 }
 
-
-
-.message {
-  position: relative;
-  padding-bottom: 20px;
-}
-
 .message-time {
   display: block;
   font-size: 0.7rem;
@@ -165,26 +173,20 @@ body {
   text-align: right;
 }
 
-
-
-/* Responsive - mobil için */
+/* Responsive */
 @media (max-width: 480px) {
   .message-page {
     border-radius: 0;
   }
-  
-  #username {
-    margin: 8px 10px;
-  }
-  
+
   .input-area {
     padding: 8px 10px;
   }
-  
+
   #sendBtn {
     padding: 8px 12px;
   }
-  
+
   .messages {
     padding: 8px 10px;
   }

@@ -4,23 +4,34 @@
   --text-color: #fff;
 }
 
-body {
+/* Temel sıfırlama */
+html, body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: black;
+}
+
+/* Sabit arkaplan */
+body {
   background-image: url("images/music.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 100vh;
+  background-attachment: fixed; /* 📌 sabit arka plan */
   color: var(--text-color);
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding: 40px 20px;
-  box-sizing: border-box;
 }
 
+/* Müzik çalar kutusu */
 .container {
   background-image: url("images/player.webp");
   background-size: cover;
@@ -32,7 +43,6 @@ body {
   max-width: 650px;
   margin: 20px auto;
   text-align: center;
-  box-sizing: border-box;
   color: white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
@@ -86,11 +96,9 @@ body {
   color: #ccc;
 }
 
-/* 🎛️ Kontrol Butonları */
-
+/* 🎛️ Kontroller */
 #controls {
-  display: flex !important;
-  flex-direction: row !important;
+  display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
@@ -115,7 +123,7 @@ body {
   align-items: center;
   border: none;
   cursor: pointer;
-  flex-shrink: 0; /* Daralmayı engelle */
+  flex-shrink: 0;
 }
 
 .control-btn svg {
@@ -136,8 +144,11 @@ body {
   transition: background-color 0.2s ease;
 }
 
+#loginBtn:hover {
+  background-color: #449b62;
+}
 
-/* 🎵 Responsive Tasarım */
+/* 🎵 Responsive */
 @media (max-width: 480px) {
   h1 {
     font-size: 1.5rem;
@@ -162,10 +173,8 @@ body {
   #nowPlaying small {
     font-size: 0.85rem;
   }
-}
 
-@media (max-width: 480px) {
   #controls {
-    flex-direction: row;
+    gap: 12px;
   }
 }
