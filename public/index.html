@@ -1,31 +1,92 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8">
-  <title>Giriş Yap</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+  <link rel="preload" as="image" href="images/index.webp" />
+  <title>Love Countdown</title>
   <style>
     body {
-      font-family: Arial;
-      background: #f6f8fa;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      font-family: Arial, sans-serif;
+      background-image: url('images/index.webp');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin: 0;
       height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    input, button {
-      padding: 10px;
-      margin: 10px;
-      font-size: 1rem;
+
+    .login-container {
+      transition: transform 0.3s ease;
+      /* Yumuşak geçiş */
+      background-color: rgba(255, 255, 255, 0);
+      padding: 50px;
+      border-radius: 20px;
+      text-align: center;
+      width: 100%;
+      max-width: 600px;
+      box-sizing: border-box;
+
+      /* Buradan itibaren yukarı kaydırırız */
+      transform: translateY(-90px);
+      /* Ne kadar yukarı alırsan, o kadar negatif ver */
+    }
+
+    input,
+    button {
+      padding: 32px 36px;
+      /* Daha büyük iç boşluk */
+      margin: 20px 0;
+      font-size: 2rem;
+      /* Büyük yazı */
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      border: none;
+      border-radius: 16px;
+    }
+
+    button {
+      background-color: #01b3ff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0075a7;
+    }
+
+    h2 {
+      font-size: 3rem;
+      /* Büyük ve dikkat çekici */
+      margin-bottom: 30px;
+      /* Alt boşluk, inputlarla arası açılır */
+      font-weight: bold;
+      text-align: center;
+      color: white;
+      /* Arka plan uygunsa okunması için */
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0);
+      /* Hafif gölge okunabilirliği artırır */
     }
   </style>
 </head>
+
 <body>
 
-  <h2>Love App 💚 Giriş</h2>
-  <input type="text" id="username" placeholder="Kullanıcı adı (beyza/onat)">
-  <input type="password" id="password" placeholder="Şifre">
-  <button onclick="login()">Giriş Yap</button>
+  <div class="login-container">
+    <h2>💙 Giriş 💙</h2>
+    <input type="text" id="username" placeholder="Kullanıcı adı (beyza/onat)">
+    <input type="password" id="password" placeholder="Şifre">
+    <button onclick="login()">Giriş Yap</button>
+  </div>
 
   <script>
     function login() {
@@ -45,6 +106,24 @@
       }
     }
   </script>
+  <script>
+    const loginContainer = document.querySelector('.login-container');
+    const initialHeight = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      const currentHeight = window.innerHeight;
+
+      // Klavye açıldıysa (yükseklik azaldıysa)
+      if (currentHeight < initialHeight) {
+        loginContainer.style.transform = 'translateY(-100px)';
+      } else {
+        // Klavye kapandıysa eski konuma al
+        loginContainer.style.transform = 'translateY(0)';
+      }
+    });
+  </script>
+
 
 </body>
+
 </html>
