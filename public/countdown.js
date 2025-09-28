@@ -1,4 +1,4 @@
-const meetDate = new Date("2025-08-30");
+const meetDate = new Date("2025-12-09");
 const today = new Date();
 today.setHours(0, 0, 0, 0);
 
@@ -8,13 +8,13 @@ document.getElementById("countdown").textContent =
   diffDays > 0
     ? `${diffDays} gün kaldı!`
     : diffDays === 0
-    ? "Bugün buluşuyorsunuz! ❤"
-    : "Geçti bile, ama sevgi kalıcı! 🫶";
+    ? "1. Level Başarıyla Tamamlandı ! ❤"
+    : "Düşünebiliyor musun bu kadar zamandır beraberizzz! 🫶";
 
 const calendar = document.getElementById("calendar");
 
 const year = 2025;
-const month = 7; // Ağustos (0-based)
+const month = 12; // Ağustos (0-based)
 
 const firstDay = new Date(year, month, 1).getDay();
 const lastDate = new Date(year, month + 1, 0).getDate();
@@ -39,7 +39,7 @@ for (let day = 1; day <= lastDate; day++) {
     dayEl.classList.add("today");
   }
 
-  if (day === 30) {
+  if (day === 9) {
     dayEl.classList.add("love-day");
     dayEl.textContent = "💖";
   }
