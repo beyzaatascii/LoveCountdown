@@ -11,7 +11,7 @@ body, html {
 
 /* Arkaplan kaplamalı ve sabit */
 .overlay {
-  background-image: url('images/bg.webp'); /* ARKAPLANINI BURADA DEĞİŞTİR */
+  background-image: url('./images/bg.webp'); /* ARKAPLANINI BURADA DEĞİŞTİR */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

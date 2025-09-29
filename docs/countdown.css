@@ -5,7 +5,7 @@ html, body {
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-image: url("images/mavi.webp");
+  background-image: url("./images/mavi.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

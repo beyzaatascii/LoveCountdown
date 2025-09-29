@@ -19,7 +19,7 @@ html, body {
 
 /* Sabit arkaplan */
 body {
-  background-image: url("images/music.webp");
+  background-image: url("./images/music.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -33,7 +33,7 @@ body {
 
 /* Müzik çalar kutusu */
 .container {
-  background-image: url("images/player.webp");
+  background-image: url("./images/player.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

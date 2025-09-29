@@ -10,7 +10,7 @@ html, body {
 }
 
 .heart-page {
-  background-image: url("images/kalpli-kare.webp");
+  background-image: url("./images/kalpli-kare.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
